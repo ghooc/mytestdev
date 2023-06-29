@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Configuration</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Configuration</h1>
+
+
+
+<p>The behaviour of the debugger can be configured in four different
+ways: 1. Regular VS Code settings 2. Additional VS Code settings in
+<code>.vscode/settings.json</code> 3. Launch config in
+<code>.vscode/launch.json</code> 4. Options in R, modified using
+<code>options(vsc.XXX=...)</code></p>
+<div id="regular-vs-code-settings" class="section level2">
+<h2>1. Regular VS Code settings</h2>
+<p>These settings can be accessed e.g. by right-clicking on this
+extension in the Extensions-window and selecting
+<code>Extension Settings</code>. Current settings are:</p>
+<ul>
+<li><code>r.rpath.XXX (string)</code>: The path to the R executable
+itself (not just the directory!). Can usually be left empty on a windows
+installation with the default settings.</li>
+<li><code>r.debugger.timeouts.startup (number)</code>: The maximum time
+in ms that is waited for R to startup. Can be set to a larger value if
+launching the debugger fails with a notification “R path not
+valid”.</li>
+<li><code>r.debugger.timeouts.terminate (number)</code>: The time in ms
+that is waited when terminating. Is used to allow messages etc. to
+appear before terminating the debugger.</li>
+<li><code>r.debugger.timeouts.prompt (number)</code>: The time in ms
+that is waited before handling input prompts on stdout. Might be helpful
+to avoid async issues between stdout/stderr/sockets.</li>
+<li><code>r.debugger.checkVersion (&quot;none&quot;|&quot;required&quot;|&quot;recommended&quot;)</code>:
+Whether to check the version of the R package vscDebugger before
+launching the debugger. The debugger always checks if the package is
+present at all. It is recommended to set this setting to
+<code>recommended</code> or <code>required</code>.</li>
+</ul>
+</div>
+<div id="additional-vs-code-settings" class="section level2">
+<h2>2. Additional VS Code settings</h2>
+<p>These settings can be set by editing the <code>settings.json</code>,
+either globally or on a per workspace basis. They are useful mostly for
+debugging the debugger itself and their behaviour might change without
+notice.</p>
+<ul>
+<li><code>r.debugger.logLevelRuntime</code>,
+<code>r.debugger.logLevelSession</code>,
+<code>r.debugger.logLevelRSession</code>
+(<code>&quot;silent&quot;|&quot;info&quot;|&quot;debug&quot;</code>): Log level of the debugger itself
+(visible e.g. in the ‘parent session’ when running the debugger from
+code).</li>
+<li><code>r.debugger.packageURL</code>: Overwrite for the URL used to
+download the R package when installing it automatically.</li>
+<li><code>r.debugger.printStdout</code>,
+<code>r.debugger.printStderr</code>,
+<code>r.debugger.printSinkSocket</code>
+(<code>&quot;nothing&quot;|&quot;all&quot;|&quot;filtered&quot;</code>): To what extent output by the
+R process is printed to the debug console.</li>
+</ul>
+</div>
+<div id="launch-config" class="section level2">
+<h2>3. Launch Config</h2>
+<div id="launch-requests" class="section level3">
+<h3>3.1 Launch Requests</h3>
+<p>These configurations are specified by the entry
+<code>&quot;request&quot;: &quot;launch&quot;</code>. In this mode, a new R process is
+started in the background for each debug session and its
+stdin/stdout/stderr are handled by the VS Code extension. This is ideal
+to make the debugger as powerful and robust as possible.</p>
+<p>The main behaviour of a debug session can be configured with the
+entry <code>&quot;debugMode&quot;</code>, which can be one of the values
+<code>&quot;function&quot;</code>, <code>&quot;file&quot;</code>, and
+<code>&quot;workspace&quot;</code>. The intended usecases for these modes are:</p>
+<ul>
+<li><code>&quot;workspace&quot;</code>: Starts an R process in the background and
+sends all input into the debug console to the R process (but indirectly,
+through <code>eval()</code> nested in some helper functions). R Files
+can be run by focussing a file and pressing <code>F5</code>. The stack
+view contains a single dummy frame. To view the variables in the global
+environment it is often necessary to click this frame and expand the
+variables view! This method is ‘abusing’ the debug adapter protocol to
+some extent, since the protocol is not designed for ongoing interactive
+programming in a global workspace.</li>
+<li><code>&quot;file&quot;</code>: Is pretty much equivalent to launching the
+debugger with <code>&quot;workspace&quot;</code> and immediately calling
+<code>.vsc.debugSource()</code> on a file. Is hopefully the behaviour
+expected by users coming from R Studio etc.</li>
+<li><code>&quot;function&quot;</code>: The above debug modes introduce significant
+overhead by passing all input through <code>eval()</code> etc. and use a
+custom version of <code>source()</code>, which makes changes to the R
+code in order to set breakpoints. To provide a somewhat ‘cleaner’ method
+of running code, this debug mode can be used. The specified file is
+executed using the default <code>source</code> command and breakpoints
+are set by using R’s <code>trace(..., tracer=browser)</code> function,
+which is more robust than the custom breakpoint mechanism. Finally, the
+specified main function (by default <code>main()</code>) is called.</li>
+</ul>
+<p>The remaining config entries are:</p>
+<ul>
+<li><code>&quot;workingDirectory&quot;</code>: An absolute path to the desired
+work directory. Defaults to the workspace folder. The R process is
+always launched in the workspace folder (reading the
+<code>.Rprofile</code> there) and then changes directory.</li>
+<li><code>&quot;file&quot;</code>: Required for debug modes <code>&quot;file&quot;</code>
+and <code>&quot;function&quot;</code>. The file to be debugged/sourced before
+calling the main function.</li>
+<li><code>&quot;mainFunction&quot;</code>: Only used for debug mode
+<code>&quot;function&quot;</code>. The name of the main function to be debugged.
+Must be callable without arguments.</li>
+<li><code>&quot;allowGlobalDebugging&quot;</code>: Whether to keep the R session
+running after debugging and evaluate expressions from the debug console.
+Essential for debug moge <code>&quot;workspace&quot;</code>, optional for
+<code>&quot;file&quot;</code>, usually not sensible for
+<code>&quot;function&quot;</code>.</li>
+<li><code>&quot;loadPackages&quot;</code>: List of paths to packages to be loaded
+using <code>pkgload::load_all</code> before launching the debugger.
+Requires <code>pkgload</code> to be installed.</li>
+<li><code>&quot;loadSilently&quot;</code>: Whether to suppress messages while
+loading packages specified in <code>loadPackages</code>.</li>
+</ul>
+<p>For config entries shared with attach requests see 3.3.</p>
+</div>
+<div id="attach-requests" class="section level3">
+<h3>3.2 Attach Requests</h3>
+<p>These configurations are specified by the entry
+<code>&quot;request&quot;: &quot;attach&quot;</code>. In this mode, the debugger is attached
+to an already running R process. To answer the requests sent by VS Code,
+the function <code>.vsc.listenForDAP()</code> must be called manually.
+This mode is ideal to give the user a more direct access to the R
+process.</p>
+<p>This mode should work fine with the defaults, but can be finetuned
+with the following config entries:</p>
+<ul>
+<li><code>&quot;port&quot;</code>: Port number where vscDebugger is listening for
+DAP messages. Defaults to 18721.</li>
+<li><code>&quot;host&quot;</code>: Host name where vscDebugger is listening for
+DAP messages. Defaults to “localhost”.</li>
+<li><code>&quot;useCustomSocket&quot;</code>: Whether to use a separate socket for
+custom events. Is necessary to allow flow control (stepping through
+code).</li>
+<li><code>&quot;customPort&quot;</code>: Port number of custom socket. Leave
+emtpy/0 to assign automatically.</li>
+<li><code>&quot;customHost&quot;</code>: Host name of custom socket. Leave empty
+to use localhost.</li>
+<li><code>&quot;splitOverwrittenOutput&quot;</code>: Whether to show the
+overwritten output in the normal stdout/stderr as well.</li>
+</ul>
+</div>
+<div id="shared-config-entries" class="section level3">
+<h3>3.3 Shared config entries</h3>
+<p>These configuration entries are used in both modes.</p>
+<ul>
+<li><code>&quot;setBreakpointsInPackages&quot;</code>: Whether to try and set
+breakpoints in exported functions from ALL packages. Very slow! Usually,
+specifying individual packages in <code>debuggedPackages</code> is
+preferred.</li>
+<li><code>&quot;includePackageScopes&quot;</code>: Set to <code>true</code> to
+view the exported functions/variables of packages in the variable
+view.</li>
+<li><code>&quot;debuggedPackages&quot;</code>: List of package names to be
+debugged. These packages are loaded before running the specified
+file/function. Breakpoints and the modified
+<code>print</code>/<code>cat</code>/<code>message</code>/<code>str</code>
+functions are applied in these packages.</li>
+<li><code>&quot;overwritePrint&quot;</code>: Whether to attach a custom
+<code>print</code> function that also prints a link to the file and line
+number in the debug console.</li>
+<li><code>&quot;overwriteCat&quot;</code>: Same as above for
+<code>cat()</code></li>
+<li><code>&quot;overwriteStr&quot;</code>: Same as above for
+<code>str()</code>.</li>
+<li><code>&quot;overwriteMessage&quot;</code>: Same as above for
+<code>message()</code></li>
+<li><code>&quot;overwriteSource&quot;</code>: Whether to overwrite the
+<code>source</code> function with a custom version that is affected by
+breakpoints set in VS Code.</li>
+</ul>
+</div>
+</div>
+<div id="r-options" class="section level2">
+<h2>4. R Options</h2>
+<p>These options are set directly in R. The safest way to set these is
+using a custom <code>.Rprofile</code>, since all of them are accessed
+after executing <code>.Rprofile</code> if present, but some are read
+only once before executing any of the debugged code.</p>
+<p>The available options might change behaviour without notice. Some of
+these options are only useful for debugging the R package itself.</p>
+<p>There are no value checks when reading the options, so make sure to
+set them to a sensible value. If no values are set, the defaults listed
+below are used.</p>
+<ul>
+<li><code>&quot;vsc.arrayDimOrder&quot; = c(3,1,2)</code>: The order in which the
+dimensions of an array are shown in the variables view. Can also be a
+list of numeric vectors.</li>
+<li><code>&quot;vsc.assignToAns&quot; = TRUE</code>: Whether to assign the result
+of the last evaluation from the debug console to
+<code>.GlobalEnv$.ans</code></li>
+<li><code>&quot;vsc.completionsFromUtils&quot; = FALSE</code>: Whether to use the
+default completions from the <code>utils</code> package when typing in
+the debug console</li>
+<li><code>&quot;vsc.completionsFromVscDebugger&quot; = TRUE</code>: Whether to use
+completions generated by the R package <code>vscDebugger</code> when
+typing in the debug console</li>
+<li><code>&quot;vsc.convertFactorEntries&quot; = FALSE</code>: Whether to convert
+the individual entries of factors to strings when shown in the variables
+view</li>
+<li><code>&quot;vsc.dataFrameDimOrder&quot; = NULL</code>: Same as
+<code>vsc.arrayDimOrder</code> for data frames. Defaults to
+<code>vsc.arrayDimOrder</code>.</li>
+<li><code>&quot;vsc.defaultAllowGlobalDebugging&quot; = TRUE</code>: Default value
+for the launch config entry <code>allowGlobalDebugging</code></li>
+<li><code>&quot;vsc.defaultDebugMode&quot; = &quot;workspace&quot;</code>: Default value for
+the launch config entry <code>debugMode</code></li>
+<li><code>&quot;vsc.defaultIncludePackageScopes&quot; = FALSE</code>: Default
+value for the launch config entry <code>includePackageScopes</code></li>
+<li><code>&quot;vsc.defaultOverwriteCat&quot; = TRUE</code> Default value for the
+launch config entry <code>overwriteCat</code></li>
+<li><code>&quot;vsc.defaultOverwriteMessage&quot; = TRUE</code> Default value for
+the launch config entry <code>overwriteMessage</code></li>
+<li><code>&quot;vsc.defaultOverwritePrint&quot; = TRUE</code> Default value for
+the launch config entry <code>overwritePrint</code></li>
+<li><code>&quot;vsc.defaultOverwriteSource&quot; = TRUE</code> Default value for
+the launch config entry <code>overwriteSource</code></li>
+<li><code>&quot;vsc.defaultOverwriteStr&quot; = TRUE</code> Default value for the
+launch config entry <code>overwriteStr</code></li>
+<li><code>&quot;vsc.defaultSetBreakpointsInPackages&quot; = FALSE</code> Default
+value for the launch config entry
+<code>setBreakpointsInPackages</code></li>
+<li><code>&quot;vsc.deparseMaxBytes&quot; = 1e5</code>: Maximum size for variables
+to be deparsed.</li>
+<li><code>&quot;vsc.dropArrays&quot; = TRUE</code>: Whether to skip dimensions of
+size one when showing arrays in the variables window</li>
+<li><code>&quot;vsc.evaluateActiveBindings&quot; = FALSE</code>: Whether to
+evaluate active bindings and show the value in the variables view</li>
+<li><code>&quot;vsc.groupAttributes&quot; = FALSE</code>: Whether to group
+attributes in the variables view</li>
+<li><code>&quot;vsc.ignoreCrInEval&quot; = TRUE</code>: Whether to ignore carriage
+returns (<code>\r</code>) in the text of eval requests</li>
+<li><code>&quot;vsc.includeFrameColumn&quot; = FALSE</code>: Whether to highlight
+the column of the active frame in the source code</li>
+<li><code>&quot;vsc.previewPromises&quot; = FALSE</code>: Whether to show the
+value that a promise would currently evaluate to (can have side
+effects!)</li>
+<li><code>&quot;vsc.setBreakpointsInStack&quot; = TRUE</code>: Whether to try and
+set breakpoints in active stack frames.</li>
+<li><code>&quot;vsc.showAttributes&quot; = TRUE</code>: Whether to show attributes
+in the variables view</li>
+<li><code>&quot;vsc.showCustomAttributes&quot; = TRUE</code>: Whether to show
+custom attributes in the variables view</li>
+<li><code>&quot;vsc.showEvaluateName&quot; = TRUE</code>: Whether to include an
+evaluate name to copy variables to another R session. Can be disabled
+for performance reasons when working with large
+variables/lists/vectors.</li>
+<li><code>&quot;vsc.showInternalFrames&quot; = FALSE</code>: Whether to show the
+frames on the bottom of the stack that belong to the R package</li>
+<li><code>&quot;vsc.showUnclass&quot; = TRUE</code>: Whether to show the value of
+<code>unclass()</code> in the variables view for object variables.</li>
+<li><code>&quot;vsc.supportSetVariable&quot; = TRUE</code>: Whether to enable
+support for settings the value of variables from the variables
+window</li>
+<li><code>&quot;vsc.supportTerminateRequest&quot; = FALSE</code>: Whether to try
+and exit only the main function/file when stop (Shift+F5) is used,
+preserving the R session itself.</li>
+<li><code>&quot;vsc.trySilent&quot; = TRUE</code>: Whether to hide error messages
+that are expected and caught by the R package</li>
+<li><code>&quot;vsc.verboseVarInfos&quot; = FALSE</code>: Whether to print debug
+info when retrieving info about variables</li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
